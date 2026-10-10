@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday, Sayang 🐾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF9EF;
+    --cream2:#FBF2E1;
+    --blue:#BFE1F2;
+    --blue-deep:#8FC4E3;
+    --blue-ink:#3C5368;
+    --pink:#F6C1CC;
+    --pink-deep:#EFA0B1;
+    --gold:#F0CB6A;
+    --tape:#DCEEF8;
+    --shadow: 0 10px 24px rgba(60,83,104,.12);
+    --radius: 22px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Quicksand', sans-serif;
+    color:var(--blue-ink);
+    background:
+      radial-gradient(circle at 15% 8%, #ffffff55 0, transparent 40%),
+      repeating-linear-gradient(0deg, var(--cream), var(--cream) 38px, #fef4e2 39px, var(--cream) 40px),
+      var(--cream);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Baloo 2', sans-serif; margin:0; line-height:1.15;}
+  .script{font-family:'Caveat', cursive;}
+  a{color:inherit;}
+  img{max-width:100%;}
+  .section{
+    position:relative;
+    max-width:720px;
+    margin:0 auto;
+    padding:70px 22px 40px;
+  }
+  .section-tight{padding-top:30px;}
+  .card{
+    background:var(--cream2);
+    border:2px solid #fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:28px 26px;
+    position:relative;
+  }
+  .gingham{
+    background-image:
+      linear-gradient(90deg, rgba(143,196,227,.35) 25%, transparent 25%, transparent 75%, rgba(143,196,227,.35) 75%),
+      linear-gradient(0deg, rgba(143,196,227,.35) 25%, transparent 25%, transparent 75%, rgba(143,196,227,.35) 75%),
+      var(--blue);
+    background-size:26px 26px;
+  }
+  .tape{
+    position:absolute;
+    width:86px;height:30px;
+    background:var(--tape);
+    opacity:.85;
+    box-shadow:0 2px 4px rgba(0,0,0,.08);
+  }
+  .star{color:var(--gold);}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--blue-deep);
+    color:#fff;
+    border:none;
+    padding:13px 26px;
+    border-radius:40px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 6px 0 #6fa6c7;
+    transition:transform .12s ease;
+  }
+  .btn:active{transform:translateY(4px); box-shadow:0 2px 0 #6fa6c7;}
+  .btn.pink{background:var(--pink-deep); box-shadow:0 6px 0 #d87e92;}
+  .btn.pink:active{box-shadow:0 2px 0 #d87e92;}
+  .btn.gold{background:var(--gold); color:#5a4514; box-shadow:0 6px 0 #c9a23e;}
+  .btn.gold:active{box-shadow:0 2px 0 #c9a23e;}
+  .eyebrow{
+    font-family:'Baloo 2';
+    font-size:13px;
+    color:var(--blue-deep);
+    background:#fff;
+    display:inline-block;
+    padding:4px 14px;
+    border-radius:20px;
+    margin-bottom:10px;
+    border:1.5px dashed var(--blue-deep);
+  }
+  .sticky-player{
+    position:sticky; top:0; z-index:40;
+    background:linear-gradient(180deg, var(--blue), #eaf6fc);
+    border-bottom:3px dashed #fff;
+    padding:10px 16px;
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    flex-wrap:wrap;
+  }
+  .sticky-player .disc{
+    width:34px;height:34px;border-radius:50%;
+    background:conic-gradient(#2b2b2b 0 100%);
+    position:relative;
+    animation: spin 3s linear infinite;
+    flex:none;
+  }
+  .sticky-player .disc:after{
+    content:"";position:absolute;inset:38%;
+    background:var(--cream);border-radius:50%;
+  }
+  @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .sticky-player span{font-family:'Baloo 2'; font-size:14px; color:var(--blue-ink);}
+  .sticky-player a.btn{padding:8px 16px; font-size:13px; box-shadow:0 4px 0 #6fa6c7;}
+
+  .heart-counter{
+    position:fixed; right:14px; bottom:14px; z-index:50;
+    background:#fff; border:2px solid var(--pink-deep);
+    border-radius:30px; padding:8px 14px;
+    font-family:'Baloo 2'; font-size:14px; color:var(--pink-deep);
+    box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:6px;
+  }
+  .hidden-heart{
+    position:absolute;
+    font-size:22px;
+    background:none; border:none; cursor:pointer;
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,.15));
+    animation: pulse 1.8s ease-in-out infinite;
+    z-index:5;
+  }
+  .hidden-heart.found{animation:none; opacity:.25; cursor:default;}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+
+  footer{
+    text-align:center; padding:60px 20px 90px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    text-align:center;
+    padding:50px 22px 40px;
+    position:relative;
+  }
+  .hero .cloud-row{font-size:26px; opacity:.8; margin-bottom:6px;}
+  .hero h1{
+    font-size:clamp(34px,8vw,54px);
+    color:var(--blue-ink);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--pink-deep);
+  }
+  .hero .for{
+    font-family:'Caveat', cursive;
+    font-size:30px;
+    color:var(--blue-deep);
+    margin-top:6px;
+  }
+  .puppy-hero{
+    font-size:90px;
+    margin:18px 0;
+    display:inline-block;
+    animation: bob 3.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+  .hero p.sub{max-width:460px; margin:10px auto 22px; font-size:16px; color:#5a6f81;}
+
+  /* number labels when content really is a sequence */
+  .num{
+    font-family:'Baloo 2'; font-weight:800; font-size:14px;
+    color:#fff; background:var(--pink-deep);
+    width:28px;height:28px;border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center;
+    margin-right:8px; flex:none;
+  }
+  .sec-title{display:flex; align-items:center; gap:4px; margin-bottom:16px;}
+  .sec-title h2{font-size:24px;}
+
+  /* envelope */
+  .envelope-wrap{display:flex; justify-content:center; padding:10px 0;}
+  .envelope{
+    width:260px; height:170px; position:relative; cursor:pointer;
+  }
+  .envelope .body{
+    position:absolute; inset:0; background:#fff;
+    border-radius:10px; border:2px solid var(--blue-deep);
+    box-shadow:var(--shadow);
+  }
+  .envelope .flap{
+    position:absolute; top:-2px; left:-2px; right:-2px; height:90px;
+    background:var(--blue);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    border-radius:10px 10px 0 0;
+    transform-origin:top;
+    transition:transform .5s ease;
+    border:2px solid var(--blue-deep); border-bottom:none;
+  }
+  .envelope.open .flap{transform:rotateX(180deg);}
+  .envelope .heartseal{
+    position:absolute; top:62px; left:50%; transform:translateX(-50%);
+    font-size:26px; transition:opacity .3s;
+  }
+  .envelope.open .heartseal{opacity:0;}
+  .letter-reveal{
+    max-width:520px; margin:18px auto 0; background:#fff;
+    border-radius:16px; padding:22px 24px; box-shadow:var(--shadow);
+    display:none; font-size:15.5px; line-height:1.75; white-space:pre-line;
+  }
+  .letter-reveal.show{display:block; animation:fadein .5s ease;}
+  @keyframes fadein{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)}}
+  .signoff{text-align:right; font-family:'Caveat'; font-size:22px; margin-top:10px; color:var(--pink-deep);}
+
+  /* catch game */
+  .game-box{
+    position:relative; height:320px; border-radius:18px; overflow:hidden;
+    background:linear-gradient(180deg,#cdeafb,#eef8fd 70%, #f6fbfe);
+    border:2px solid #fff; box-shadow:var(--shadow);
+  }
+  .game-hud{
+    position:absolute; top:10px; left:10px; right:10px; z-index:3;
+    display:flex; justify-content:space-between;
+    font-family:'Baloo 2'; font-size:14px; color:var(--blue-ink);
+    background:#ffffffcc; padding:6px 12px; border-radius:20px;
+  }
+  .falling{position:absolute; font-size:26px; background:none; border:none; cursor:pointer; top:-30px;}
+  .game-msg{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:10px; text-align:center; padding:20px;
+    background:#eef8fdee; z-index:4;
+  }
+
+  /* 10 reasons */
+  .reason-list{list-style:none; padding:0; margin:0; display:grid; gap:10px;}
+  .reason-list li{
+    background:#fff; border-radius:14px; padding:12px 16px;
+    display:flex; gap:10px; align-items:flex-start; box-shadow:0 4px 10px rgba(60,83,104,.07);
+    font-size:15px;
+  }
+
+  /* puzzle */
+  .puzzle-wrap{display:flex; justify-content:center;}
+  .puzzle{
+    display:grid; grid-template-columns:repeat(3,84px); grid-template-rows:repeat(3,84px);
+    gap:4px; background:var(--blue-deep); padding:4px; border-radius:14px; box-shadow:var(--shadow);
+  }
+  .tile{
+    background:var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center;
+    font-size:30px; cursor:pointer; user-select:none; transition:transform .15s;
+    border:none; font-family:'Baloo 2'; color:var(--blue-ink);
+  }
+  .tile.blank{background:transparent; cursor:default;}
+  .tile:active{transform:scale(.94);}
+
+  /* open-when */
+  .ow-list{display:grid; gap:10px;}
+  .ow-item{
+    background:#fff; border-radius:14px; box-shadow:0 4px 10px rgba(60,83,104,.07);
+    overflow:hidden;
+  }
+  .ow-head{
+    width:100%; text-align:left; border:none; background:none; cursor:pointer;
+    padding:14px 18px; font-family:'Baloo 2'; font-size:15.5px; color:var(--blue-ink);
+    display:flex; align-items:center; gap:10px;
+  }
+  .ow-body{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+  .ow-body p{margin:0; padding:0 18px 16px; font-size:14.5px; line-height:1.7; color:#56697b;}
+  .ow-item.open .ow-body{max-height:260px;}
+
+  /* playlist */
+  .player-card{
+    background:linear-gradient(135deg,#2c2f36,#44474f);
+    border-radius:18px; padding:22px; color:#fff; box-shadow:var(--shadow);
+    display:flex; gap:16px; align-items:center;
+  }
+  .cassette{
+    width:70px;height:46px; flex:none; background:var(--gold); border-radius:6px; position:relative;
+  }
+  .cassette:before, .cassette:after{
+    content:""; position:absolute; top:14px; width:16px;height:16px; border-radius:50%;
+    background:#2c2f36; border:3px solid #fff8;
+  }
+  .cassette:before{left:9px;} .cassette:after{right:9px;}
+  .player-txt{flex:1;}
+  .player-txt small{opacity:.7;}
+  .player-bar{height:5px; background:#ffffff33; border-radius:4px; margin:10px 0; position:relative;}
+  .player-bar i{position:absolute; left:0; top:0; bottom:0; width:38%; background:var(--pink-deep); border-radius:4px;}
+
+  /* memory */
+  .memory-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:360px; margin:0 auto;
+  }
+  .mcard{
+    aspect-ratio:1; border-radius:10px; background:var(--blue-deep); cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:22px; color:transparent;
+    transition:transform .3s, background .3s; border:none;
+  }
+  .mcard.flip{background:#fff; color:#000;}
+  .mcard.matched{background:var(--pink); color:#000; cursor:default;}
+
+  /* quiz */
+  .quiz-opt{
+    display:block; width:100%; text-align:left; background:#fff; border:2px solid #fff;
+    border-radius:12px; padding:12px 16px; margin-bottom:8px; cursor:pointer; font-size:14.5px;
+    font-family:'Quicksand'; color:var(--blue-ink); box-shadow:0 3px 8px rgba(60,83,104,.06);
+  }
+  .quiz-opt.correct{border-color:#8fcf9d; background:#eafbee;}
+  .quiz-feedback{font-size:14px; color:#5a6f81; margin-top:6px; min-height:20px;}
+
+  /* jar */
+  .jar-wrap{text-align:center;}
+  .jar{font-size:80px;}
+  .jar-note{
+    background:#fff; border-radius:14px; padding:16px 20px; max-width:380px; margin:16px auto 0;
+    box-shadow:var(--shadow); font-size:15px; display:none;
+  }
+  .jar-note.show{display:block; animation:fadein .4s ease;}
+
+  /* wish box */
+  .cake{font-size:70px; text-align:center;}
+  .wish-note{
+    background:#fff; border-radius:14px; padding:16px 20px; max-width:380px; margin:14px auto 0;
+    box-shadow:var(--shadow); font-size:15px; text-align:center; display:none;
+  }
+  .wish-note.show{display:block; animation:fadein .4s ease;}
+
+  /* claw */
+  .claw-box{
+    background:linear-gradient(180deg,#cfeafb,#fff); border-radius:18px; padding:26px; text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .claw-prizes{font-size:34px; letter-spacing:14px; margin:14px 0;}
+  .claw-result{
+    margin-top:12px; background:#fff; border-radius:12px; padding:14px; display:none; font-size:15px;
+  }
+  .claw-result.show{display:block; animation:fadein .4s ease;}
+
+  /* final letter */
+  .final-card{background:#fff; border-radius:20px; padding:26px; box-shadow:var(--shadow);}
+  .confetti-piece{
+    position:fixed; top:-10px; width:9px;height:14px; z-index:60; pointer-events:none;
+    animation:fall linear forwards;
+  }
+  @keyframes fall{to{transform:translateY(110vh) rotate(600deg); opacity:.9;}}
+
+  @media(max-width:480px){
+    .puzzle{grid-template-columns:repeat(3,76px); grid-template-rows:repeat(3,76px);}
+  }
+</style>
+</head>
+<body>
+
+<!-- sticky mini player -->
+<div class="sticky-player">
+  <div class="disc"></div>
+  <span>Risk It All — Bruno Mars <span class="script" style="font-size:15px;">(lagu kita malam ini)</span></span>
+  <a class="btn" href="https://brunomars.lnk.to/theromantic/youtube" target="_blank" rel="noopener">🎧 Puter Lagunya</a>
+</div>
+
+<div class="heart-counter">💙 <span id="heartCount">0</span>/5 hati tersembunyi</div>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" id="hero" style="position:relative;">
+  <button class="hidden-heart" style="top:18px; left:8%;" onclick="foundHeart(this)">💙</button>
+  <div class="cloud-row">⛅ ˚ ༘ ⋆｡˚ ☁️ ⋆｡˚🌷</div>
+  <h1>Happy Birthday,<br><em>Sayang</em> 🎂</h1>
+  <div class="for">dari Aku, dengan sepenuh hati</div>
+  <div class="puppy-hero">🐶</div>
+  <p class="sub">Website kecil ini aku bikin khusus buat kamu. Isinya bukan cuma ucapan —
+  ada surat, ada game receh, ada kejutan yang nyempil di sela-sela scroll.
+  Pelan-pelan aja bacanya, ya. Setiap bagian ada maksudnya.</p>
+  <button class="btn pink" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">Buka Kejutannya ♡</button>
+</section>
+
+<!-- ============ 2. INTRO ============ -->
+<section class="section section-tight" id="intro">
+  <div class="card">
+    <span class="eyebrow">Untuk kamu yang lagi baca ini</span>
+    <p style="font-size:15.5px; line-height:1.8; white-space:pre-line; margin:0;">Hai, Sayang.
+
+Selamat ulang tahun. Ini tahun baru buat kamu — dan aku seneng banget masih diizinkan ada di dalamnya.
+
+Dua tahun belakangan ini banyak hal berubah, tapi satu yang nggak: betapa bersyukurnya aku punya kamu. Orang yang selalu dengerin walau ceritaku muter-muter, yang ngerti aku bahkan tanpa aku jelasin panjang-panjang, yang kerja keras buat hidupnya sendiri tapi masih nyisain ruang buat "kita".
+
+Scroll pelan-pelan ya. Di bawah ada game-game kecil, surat-surat, dan beberapa hati yang sengaja aku sembunyiin di sepanjang halaman ini — anggap aja itu versi digital dari aku yang nyelip-nyelipin catatan kecil buat kamu.
+
+Siap? ⬇️</p>
+  </div>
+</section>
+
+<!-- ============ 3. MINI GAME — CATCH MY LOVE ============ -->
+<section class="section">
+  <div class="sec-title"><span class="num">1</span><h2>Mini Game — Catch My Love</h2></div>
+  <p style="color:#5a6f81; font-size:14.5px; margin-top:-8px;">Tangkap hati sebanyak mungkin dalam 20 detik. Klik langsung di hatinya ya.</p>
+  <div class="game-box" id="gameBox">
+    <div class="game-hud"><span>Skor: <b id="score">0</b></span><span>Waktu: <b id="time">20</b>s</span></div>
+    <div class="game-msg" id="gameStart">
+      <div style="font-size:40px;">🐾</div>
+      <p style="margin:0; font-size:15px; max-width:260px;">Setiap hati yang kamu tangkap = satu alasan kenapa aku sayang kamu. Yuk mulai.</p>
+      <button class="btn" onclick="startGame()">Mulai Tangkap ♡</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. SURAT UCAPAN (envelope) ============ -->
+<section class="section" id="envelope-section" style="position:relative;">
+  <button class="hidden-heart" style="top:10px; right:10%;" onclick="foundHeart(this)">💙</button>
+  <div class="sec-title"><span class="num">2</span><h2>Surat Ucapan</h2></div>
+  <p style="color:#5a6f81; font-size:14.5px; margin-top:-8px;">Klik amplopnya buat dibuka.</p>
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope" onclick="openEnvelope()">
+      <div class="body" style="display:flex; align-items:center; justify-content:center; font-family:'Caveat'; font-size:20px; color:var(--blue-deep); padding-top:20px;">Surat spesial untukmu, buka yaa ♡</div>
+      <div class="flap"></div>
+      <div class="heartseal">💌</div>
+    </div>
+  </div>
+  <div class="letter-reveal" id="letterReveal">
+Selamat ulang tahun, Sayang.
+
+Semoga di umur barumu ini, semua capekmu kebayar, semua kerja kerasmu kelihatan hasilnya, dan semua hal baik yang kamu kasih ke orang lain, balik lagi ke kamu berlipat-lipat.
+
+Aku nggak janji bisa kasih dunia. Tapi aku janji akan terus jadi orang yang dengerin kamu balik, ngertiin kamu balik, dan sayang kamu — hari ini, dan hari-hari sesudahnya.
+    <div class="signoff">— Aku, yang selalu bangga sama kamu</div>
+  </div>
+</section>
+
+<!-- ============ 5. 10 THINGS ============ -->
+<section class="section">
+  <div class="sec-title"><span class="num">3</span><h2>10 Hal yang Aku Suka Darimu</h2></div>
+  <ul class="reason-list">
+    <li>🐾 Cara kamu selalu dengerin aku, walau ceritaku berantakan dan nggak penting-penting amat.</li>
+    <li>🐾 Cara kamu ngerti aku, bahkan di saat aku sendiri bingung gimana cara ngomongnya.</li>
+    <li>🐾 Kerja kerasmu — buat hidupmu, buat mimpimu, dan buat "kita" juga.</li>
+    <li>🐾 Kesabaranmu ngadepin aku yang kadang ribet dan nggak gampang.</li>
+    <li>🐾 Hati penyayangmu, ke aku, ke keluarga, ke siapa pun di sekitarmu.</li>
+    <li>🐾 Kebaikanmu yang nggak pernah itung-itungan.</li>
+    <li>🐾 Pengertianmu yang selalu didahuluin sebelum marah.</li>
+    <li>🐾 Dua tahun ini, kamu jadi tempat paling nyaman buat aku pulang.</li>
+    <li>🐾 Caramu bikin hal-hal kecil jadi berasa berarti banget.</li>
+    <li>🐾 Dan yang paling utama — kamu, apa adanya kamu, udah lebih dari cukup bikin aku bersyukur.</li>
+  </ul>
+</section>
+
+<!-- ============ 6. PUZZLE ============ -->
+<section class="section" style="position:relative;">
+  <button class="hidden-heart" style="top:4px; left:4%;" onclick="foundHeart(this)">💙</button>
+  <div class="sec-title"><span class="num">4</span><h2>Mini Game — Puzzle</h2></div>
+  <p style="color:#5a6f81; font-size:14.5px; margin-top:-8px;">Geser angka sampai urut 1–8, nanti ada pesan rahasia muncul.</p>
+  <div class="puzzle-wrap">
+    <div class="puzzle" id="puzzle"></div>
+  </div>
+  <p id="puzzleMsg" style="text-align:center; font-family:'Caveat'; font-size:22px; color:var(--pink-deep); min-height:30px; margin-top:12px;"></p>
+</section>
+
+<!-- ============ 7. OPEN WHEN ============ -->
+<section class="section">
+  <div class="sec-title"><span class="num">5</span><h2>Open When...</h2></div>
+  <p style="color:#5a6f81; font-size:14.5px; margin-top:-8px;">Pilih sesuai suasana hatimu sekarang.</p>
+  <div class="ow-list" id="owList">
+    <div class="ow-item">
+      <button class="ow-head" onclick="toggleOW(this)">💙 Open when you're sad</button>
+      <div class="ow-body"><p>Kamu boleh sedih. Nggak apa-apa. Tapi tolong inget, kamu nggak harus kuat sendirian — ada aku, yang siap dengerin, bahkan kalau kamu cuma mau diem aja ditemenin.</p></div>
+    </div>
+    <div class="ow-item">
+      <button class="ow-head" onclick="toggleOW(this)">💌 Open when you miss me</button>
+      <div class="ow-body"><p>Aku juga lagi mikirin kamu, mungkin di saat yang sama. Jarak atau waktu nggak pernah bikin itu berubah.</p></div>
+    </div>
+    <div class="ow-item">
+      <button class="ow-head" onclick="toggleOW(this)">😮‍💨 Open when you feel tired</button>
+      <div class="ow-body"><p>Kerja kerasmu udah cukup buat hari ini. Istirahat bukan tanda kamu lemah, itu tanda kamu manusia. Pelan-pelan aja, Sayang.</p></div>
+    </div>
+    <div class="ow-item">
+      <button class="ow-head" onclick="toggleOW(this)">🫧 Open when you doubt yourself</button>
+      <div class="ow-body"><p>Kamu meragukan dirimu, tapi aku nggak pernah. Semua yang kamu perjuangkan sejauh ini — itu bukti kamu lebih kuat dari yang kamu kira.</p></div>
+    </div>
+    <div class="ow-item">
+      <button class="ow-head" onclick="toggleOW(this)">🔔 Open when you need a reminder</button>
+      <div class="ow-body"><p>Kamu disayang. Bukan karena kamu sempurna, tapi karena kamu kamu — dengan segala baik dan pengertianmu. Itu aja udah cukup.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. PLAYLIST ============ -->
+<section class="section" style="position:relative;">
+  <button class="hidden-heart" style="bottom:0; right:6%;" onclick="foundHeart(this)">💙</button>
+  <div class="sec-title"><span class="num">6</span><h2>Playlist &amp; Musik</h2></div>
+  <div class="player-card">
+    <div class="cassette"></div>
+    <div class="player-txt">
+      <small>Lagu buat kamu</small>
+      <h3 style="color:#fff; font-size:17px; margin-top:2px;">Risk It All — Bruno Mars</h3>
+      <div class="player-bar"><i></i></div>
+      <small>Karena liriknya persis apa yang pengen aku bilang: aku rela berjuang buat kamu, apa pun itu.</small><br>
+      <a class="btn gold" style="margin-top:10px; padding:8px 18px; font-size:13px;" href="https://brunomars.lnk.to/theromantic/youtube" target="_blank" rel="noopener">▶ Dengerin</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. MEMORY GAME ============ -->
+<section class="section">
+  <div class="sec-title"><span class="num">7</span><h2>Mini Game — Memory Cards</h2></div>
+  <p style="color:#5a6f81; font-size:14.5px; margin-top:-8px;">Temukan semua pasangan yang sama.</p>
+  <div class="memory-grid" id="memoryGrid"></div>
+  <p id="memoryMsg" style="text-align:center; font-family:'Caveat'; font-size:22px; color:var(--pink-deep); min-height:30px; margin-top:10px;"></p>
+</section>
+
+<!-- ============ 10. QUIZ ============ -->
+<section class="section" style="position:relative;">
+  <button class="hidden-heart" style="top:0; left:8%;" onclick="foundHeart(this)">💙</button>
+  <div class="sec-title"><span class="num">8</span><h2>Kuis Tentang Kalian</h2></div>
+  <div class="card" style="padding:22px;">
+    <p id="quizQ" style="font-family:'Baloo 2'; font-size:16px; margin-bottom:14px;"></p>
+    <div id="quizOpts"></div>
+    <p class="quiz-feedback" id="quizFeedback"></p>
+  </div>
+</section>
+
+<!-- ============ 11. JAR OF REASONS ============ -->
+<section class="section">
+  <div class="sec-title"><span class="num">9</span><h2>A Jar Full of Reasons</h2></div>
+  <div class="jar-wrap">
+    <div class="jar">🫙</div>
+    <button class="btn" onclick="pickJar()">Ambil Satu Kertas</button>
+    <div class="jar-note" id="jarNote"></div>
+  </div>
+</section>
+
+<!-- ============ 12. WISH BOX ============ -->
+<section class="section" style="position:relative;">
+  <button class="hidden-heart" style="bottom:4px; right:4%;" onclick="foundHeart(this)">💙</button>
+  <div class="sec-title"><span class="num">10</span><h2>Wish Box — Doa &amp; Harapan</h2></div>
+  <div class="jar-wrap">
+    <div class="cake">🎂🕯️🕯️🕯️</div>
+    <button class="btn pink" onclick="pickWish()">Pick a Wish</button>
+    <div class="wish-note" id="wishNote"></div>
+  </div>
+</section>
+
+<!-- ============ 13. HIDDEN HEARTS RECAP ============ -->
+<section class="section">
+  <div class="sec-title"><span class="num">11</span><h2>Hidden Hearts Hunt</h2></div>
+  <div class="card" style="text-align:center;">
+    <p style="margin:0 0 8px;">Dari tadi aku sembunyiin 5 hati 💙 di sela-sela halaman ini. Udah nemu berapa?</p>
+    <p style="font-family:'Baloo 2'; font-size:22px; color:var(--pink-deep); margin:0;" id="huntRecap">0 / 5 ditemukan</p>
+    <p style="font-size:13px; color:#8295a5; margin-top:8px;">(scroll ulang ke atas kalau mau cari sisanya, mereka nggak hilang kok)</p>
+  </div>
+</section>
+
+<!-- ============ 14. CLAW MACHINE ============ -->
+<section class="section">
+  <div class="sec-title"><span class="num">12</span><h2>Mini Game — Claw Machine</h2></div>
+  <div class="claw-box">
+    <p style="margin:0 0 4px; color:#5a6f81; font-size:14.5px;">Dapatkan hadiah spesial!</p>
+    <div class="claw-prizes">🐶🧸🎀🍪</div>
+    <button class="btn gold" onclick="pickClaw()">🦾 Ambil</button>
+    <div class="claw-result" id="clawResult"></div>
+  </div>
+</section>
+
+<!-- ============ 15. FINAL LETTER ============ -->
+<section class="section" id="finalSection">
+  <div class="sec-title"><span class="num">13</span><h2>Surat Terakhir</h2></div>
+  <div class="final-card" id="finalCard">
+    <p style="font-size:15.5px; line-height:1.8; white-space:pre-line; margin:0;">Terima kasih sudah hadir dalam hidupku, Sayang. Selamat ulang tahun — semoga tahun ini jadi awal dari banyak hal baik yang kamu layak dapetin.
+
+Dua tahun ini aku belajar banyak dari cara kamu mencintai: sabar, pengertian, dan nggak banyak drama. Aku belum bisa kasih dunia buat kamu sekarang. Tapi aku yakin — di mana pun kamu berada nanti, hatiku akan selalu ada di sampingmu.
+
+I love you, hari ini, besok, dan seterusnya.</p>
+    <div class="signoff">— Aku</div>
+    <div style="text-align:center; margin-top:18px;">
+      <button class="btn pink" onclick="finalSurprise()">🎁 Buka Hadiah Terakhir</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16. FOOTER ============ -->
+<footer class="gingham" style="border-radius:28px; max-width:720px; margin:0 auto 40px; padding:50px 24px;">
+  <h2 class="script" style="font-size:38px; color:var(--blue-ink);">Happy Birthday, My Love ♡</h2>
+  <div style="font-size:60px; margin:14px 0;">🐶💤☁️</div>
+  <p style="max-width:380px; margin:0 auto; font-size:14.5px; color:#46617a;">Jarak dan waktu bukan penghalang, karena hatiku selalu ada di sampingmu.</p>
+  <p class="script" style="font-size:20px; margin-top:16px; color:var(--pink-deep);">Made with love, always — Aku</p>
+</footer>
+
+<script>
+/* ---------- hidden hearts ---------- */
+let heartsFound = 0;
+function foundHeart(btn){
+  if(btn.classList.contains('found')) return;
+  btn.classList.add('found');
+  btn.textContent='💙';
+  heartsFound++;
+  document.getElementById('heartCount').textContent = heartsFound;
+  document.getElementById('huntRecap').textContent = heartsFound + ' / 5 ditemukan';
+  if(heartsFound===5){
+    setTimeout(()=>alert('Semua hati ketemu! 💙 Kamu teliti banget, persis kayak caramu merhatiin aku. Makasih udah main sampai sini.'),150);
+  }
+}
+
+/* ---------- catch my love game ---------- */
+let gScore=0, gTime=20, gInterval=null, gSpawn=null, gRunning=false;
+function startGame(){
+  document.getElementById('gameStart').style.display='none';
+  gScore=0; gTime=20; gRunning=true;
+  document.getElementById('score').textContent=gScore;
+  document.getElementById('time').textContent=gTime;
+  gInterval = setInterval(()=>{
+    gTime--;
+    document.getElementById('time').textContent=gTime;
+    if(gTime<=0) endGame();
+  },1000);
+  gSpawn = setInterval(spawnHeart,650);
+}
+function spawnHeart(){
+  if(!gRunning) return;
+  const box=document.getElementById('gameBox');
+  const h=document.createElement('button');
+  h.className='falling';
+  h.textContent = Math.random()<0.15 ? '☁️' : '💙';
+  const left = Math.random()*85;
+  h.style.left = left+'%';
+  const dur = 2.4+Math.random()*1.6;
+  h.style.transition = 'top '+dur+'s linear';
+  h.onclick = (e)=>{
+    e.stopPropagation();
+    if(h.textContent==='💙'){ gScore++; document.getElementById('score').textContent=gScore; }
+    h.remove();
+  };
+  box.appendChild(h);
+  requestAnimationFrame(()=>{ h.style.top='300px'; });
+  setTimeout(()=>{ if(h.parentNode) h.remove(); }, dur*1000+50);
+}
+function endGame(){
+  gRunning=false;
+  clearInterval(gInterval); clearInterval(gSpawn);
+  document.querySelectorAll('.falling').forEach(f=>f.remove());
+  const box=document.getElementById('gameBox');
+  const msg=document.createElement('div');
+  msg.className='game-msg';
+  msg.innerHTML = '<div style="font-size:40px;">🏆</div><p style="margin:0; font-size:15px; max-width:260px;">Kamu dapet <b>'+gScore+'</b> hati! Dan itu masih kalah banyak sama alasan aku sayang kamu.</p><button class="btn" onclick="document.getElementById(\'envelope-section\').scrollIntoView({behavior:\'smooth\'})">Lanjut ke Surat ➜</button>';
+  box.appendChild(msg);
+}
+
+/* ---------- envelope ---------- */
+function openEnvelope(){
+  const env=document.getElementById('envelope');
+  env.classList.add('open');
+  setTimeout(()=>{ document.getElementById('letterReveal').classList.add('show'); }, 350);
+}
+
+/* ---------- puzzle (sliding 3x3) ---------- */
+const puzzleEmoji = ['🐾','1','2','3','4','5','6','7','8'];
+let tiles = [1,2,3,4,5,6,7,8,0]; // 0 = blank
+function renderPuzzle(){
+  const wrap=document.getElementById('puzzle');
+  wrap.innerHTML='';
+  tiles.forEach((v,i)=>{
+    const b=document.createElement('button');
+    b.className='tile'+(v===0?' blank':'');
+    b.textContent = v===0?'':v;
+    b.onclick=()=>moveTile(i);
+    wrap.appendChild(b);
+  });
+}
+function moveTile(i){
+  const blank = tiles.indexOf(0);
+  const r=Math.floor(i/3), c=i%3, br=Math.floor(blank/3), bc=blank%3;
+  if((Math.abs(r-br)===1&&c===bc)||(Math.abs(c-bc)===1&&r===br)){
+    [tiles[i],tiles[blank]]=[tiles[blank],tiles[i]];
+    renderPuzzle();
+    checkPuzzle();
+  }
+}
+function checkPuzzle(){
+  const win=[1,2,3,4,5,6,7,8,0];
+  if(tiles.every((v,i)=>v===win[i])){
+    document.getElementById('puzzleMsg').textContent = '"Kamu nyelesaiin ini kayak kamu nyelesaiin semua masalah — sabar, pelan, tapi pasti." 💙';
+  }
+}
+function shufflePuzzle(){
+  // perform random valid moves so it's always solvable
+  let blank = tiles.indexOf(0);
+  for(let n=0;n<120;n++){
+    const r=Math.floor(blank/3), c=blank%3;
+    const opts=[];
+    if(r>0) opts.push(blank-3);
+    if(r<2) opts.push(blank+3);
+    if(c>0) opts.push(blank-1);
+    if(c<2) opts.push(blank+1);
+    const pick = opts[Math.floor(Math.random()*opts.length)];
+    [tiles[blank],tiles[pick]]=[tiles[pick],tiles[blank]];
+    blank = pick;
+  }
+}
+shufflePuzzle();
+renderPuzzle();
+
+/* ---------- open when accordion ---------- */
+function toggleOW(btn){
+  const item=btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.ow-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+/* ---------- memory game ---------- */
+const memoryIcons = ['🐾','💙','⭐','🎀','🧸','🍪'];
+let mDeck=[], mFlipped=[], mMatched=0, mLock=false;
+function buildMemory(){
+  mDeck = [...memoryIcons, ...memoryIcons]
+    .map(v=>({v, matched:false}))
+    .sort(()=>Math.random()-0.5);
+  mFlipped=[]; mMatched=0; mLock=false;
+  const grid=document.getElementById('memoryGrid');
+  grid.innerHTML='';
+  mDeck.forEach((card,i)=>{
+    const b=document.createElement('button');
+    b.className='mcard';
+    b.dataset.i=i;
+    b.onclick=()=>flipCard(i);
+    grid.appendChild(b);
+  });
+  document.getElementById('memoryMsg').textContent='';
+}
+function flipCard(i){
+  if(mLock) return;
+  const cells=document.querySelectorAll('.mcard');
+  const cell=cells[i];
+  if(cell.classList.contains('flip')||cell.classList.contains('matched')) return;
+  cell.classList.add('flip');
+  cell.textContent=mDeck[i].v;
+  mFlipped.push(i);
+  if(mFlipped.length===2){
+    mLock=true;
+    const [a,b]=mFlipped;
+    if(mDeck[a].v===mDeck[b].v){
+      cells[a].classList.add('matched'); cells[b].classList.add('matched');
+      mMatched++;
+      mFlipped=[]; mLock=false;
+      if(mMatched===memoryIcons.length){
+        document.getElementById('memoryMsg').textContent='Semua pasangan ketemu — persis kita. 💙';
+      }
+    } else {
+      setTimeout(()=>{
+        cells[a].classList.remove('flip'); cells[a].textContent='';
+        cells[b].classList.remove('flip'); cells[b].textContent='';
+        mFlipped=[]; mLock=false;
+      },700);
+    }
+  }
+}
+buildMemory();
+
+/* ---------- quiz ---------- */
+const quiz=[
+  {q:"Hal apa yang paling bikin aku nyaman kalau lagi deket kamu?", opts:["Cara kamu dengerin cerita aku","Cara kamu ngerti tanpa banyak tanya","Pelukmu yang bikin tenang","Semua di atas bener"], correct:3,
+   fb:"Jawaban benar: semua di atas. Habis, itu semua emang kamu banget."},
+  {q:"Udah berapa lama kita saling kenal dan sayang?", opts:["1 tahun","2 tahun","3 tahun","Masih dikit, pengen lebih lama"], correct:1,
+   fb:"Yap, 2 tahun — dan rasanya masih pengen nambah terus."},
+  {q:"Sifat kamu yang bikin aku paling bersyukur punya kamu?", opts:["Kerja kerasmu","Kesabaran & pengertianmu","Hati penyayangmu","Semua itu, satu paket di diri kamu"], correct:3,
+   fb:"Betul. Kamu itu satu paket lengkap, Sayang."},
+  {q:"Kalau aku lagi capek, apa yang paling aku butuhin dari kamu?", opts:["Dengerin aja, nggak usah buru-buru kasih solusi","Dipeluk diem-diem","Diingetin buat istirahat","Semuanya, tergantung harinya"], correct:3,
+   fb:"Tepat sekali — dan kamu emang selalu bisa baca mana yang aku butuhin."},
+  {q:"Apa yang aku harap buat kamu di umur barumu?", opts:["Sehat terus","Semua kerja kerasmu kebayar","Makin disayang orang-orang sekitarmu","Semua itu, dan lebih banyak lagi"], correct:3,
+   fb:"Semua itu — dan satu lagi: semoga kamu makin sayang sama diri kamu sendiri juga."}
+];
+let qIndex=0;
+function renderQuiz(){
+  if(qIndex>=quiz.length){
+    document.getElementById('quizQ').textContent='Kuis selesai! Makasih udah main. 💙';
+    document.getElementById('quizOpts').innerHTML='';
+    document.getElementById('quizFeedback').textContent='';
+    return;
+  }
+  const item=quiz[qIndex];
+  document.getElementById('quizQ').textContent=(qIndex+1)+'. '+item.q;
+  const optWrap=document.getElementById('quizOpts');
+  optWrap.innerHTML='';
+  document.getElementById('quizFeedback').textContent='';
+  item.opts.forEach((opt,i)=>{
+    const b=document.createElement('button');
+    b.className='quiz-opt';
+    b.textContent=String.fromCharCode(65+i)+'. '+opt;
+    b.onclick=()=>answerQuiz(i,b);
+    optWrap.appendChild(b);
+  });
+}
+function answerQuiz(i,btn){
+  const item=quiz[qIndex];
+  document.querySelectorAll('.quiz-opt').forEach(o=>o.onclick=null);
+  if(i===item.correct) btn.classList.add('correct');
+  else document.querySelectorAll('.quiz-opt')[item.correct].classList.add('correct');
+  document.getElementById('quizFeedback').textContent=item.fb;
+  setTimeout(()=>{ qIndex++; renderQuiz(); }, 1800);
+}
+renderQuiz();
+
+/* ---------- jar of reasons ---------- */
+const jarReasons=[
+  "Karena kamu selalu nyari waktu buat dengerin aku, sepadet apa pun harimu.",
+  "Karena kamu ngerti aku tanpa perlu aku jelasin dua kali.",
+  "Karena kerja kerasmu nggak pernah bikin kamu lupa buat peduli ke orang sekitar.",
+  "Karena kesabaranmu ke aku itu nggak ada abisnya.",
+  "Karena hatimu penyayang, bahkan ke hal-hal kecil sekalipun.",
+  "Karena kebaikanmu itu asli, bukan buat pamer.",
+  "Karena kamu milih ngerti duluan, baru nanya.",
+  "Karena 2 tahun ini kamu jadi alasan aku pengen jadi orang yang lebih baik.",
+  "Karena senyummu bisa benerin hari aku yang paling berantakan sekalipun.",
+  "Karena kamu, ya kamu aja — itu udah alasan paling besar."
+];
+function pickJar(){
+  const note=document.getElementById('jarNote');
+  note.textContent = '"' + jarReasons[Math.floor(Math.random()*jarReasons.length)] + '"';
+  note.classList.remove('show'); void note.offsetWidth; note.classList.add('show');
+}
+
+/* ---------- wish box ---------- */
+const wishes=[
+  "Semoga tahun ini kamu lebih sering ketawa lepas, bukan cuma senyum tipis.",
+  "Semoga kerja kerasmu selama ini pelan-pelan mulai kelihatan hasilnya.",
+  "Semoga kamu makin pintar sayang sama diri sendiri, sama kayak kamu sayang orang lain.",
+  "Semoga semua hal baik yang kamu kasih ke dunia, balik lagi ke kamu dua kali lipat.",
+  "Semoga di umur baru ini kamu ngerasa lebih tenang, lebih damai, lebih dicintai.",
+  "Semoga aku masih dikasih kesempatan buat jadi bagian dari cerita bahagiamu.",
+  "Semoga kamu sehat selalu, karena itu syarat utama biar kita bisa bikin kenangan lebih banyak lagi.",
+  "Semoga tiap usahamu nggak pernah sia-sia, karena aku tau seberapa keras kamu coba."
+];
+function pickWish(){
+  const note=document.getElementById('wishNote');
+  note.textContent = '🕯️ ' + wishes[Math.floor(Math.random()*wishes.length)];
+  note.classList.remove('show'); void note.offsetWidth; note.classList.add('show');
+}
+
+/* ---------- claw machine ---------- */
+const clawPrizes=[
+  "Satu peluk virtual paling erat yang pernah ada. 🤗",
+  "Kupon 'boleh manja seharian penuh, nggak pakai alasan'. 🎟️",
+  "Satu janji: aku akan selalu dengerin cerita kamu sampai habis. 👂💙",
+  "Satu hadiah utama: aku, yang akan terus berusaha buat kamu. 🐶♡",
+  "Kupon 'satu kali menang argumen tanpa dibantah'. 😄"
+];
+function pickClaw(){
+  const res=document.getElementById('clawResult');
+  res.textContent = '🎁 Kamu dapet: ' + clawPrizes[Math.floor(Math.random()*clawPrizes.length)];
+  res.classList.remove('show'); void res.offsetWidth; res.classList.add('show');
+}
+
+/* ---------- final confetti ---------- */
+function finalSurprise(){
+  const colors=['#F6C1CC','#BFE1F2','#F0CB6A','#8FC4E3','#fff'];
+  for(let i=0;i<90;i++){
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    p.style.left = Math.random()*100+'vw';
+    p.style.background = colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration = (2.2+Math.random()*1.8)+'s';
+    p.style.borderRadius = Math.random()<0.5 ? '50%':'2px';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(), 4200);
+  }
+  const card=document.getElementById('finalCard');
+  const note=document.createElement('p');
+  note.className='script';
+  note.style.cssText='text-align:center; font-size:24px; color:var(--pink-deep); margin-top:16px;';
+  note.textContent='🎂 Selamat ulang tahun, Sayang. I risk it all for you.';
+  card.appendChild(note);
+}
+</script>
+</body>
+</html>
